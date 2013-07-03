@@ -15,8 +15,9 @@ if (ini_get('register_globals')) {
 	if (!isset($_COOKIE[session_name()]) || !preg_match('/^[a-z0-9]{32}$/', $_COOKIE[session_name()])) {
 		session_set_cookie_params(0, '/');
 		session_start();
+	}else{
+		session_start();
 	}
-	
 	$globals = array($_REQUEST, $_SESSION, $_SERVER, $_FILES);
 
 	foreach ($globals as $global) {
